@@ -19,40 +19,31 @@ class LinkedList:
         last.next = NewNode
 
 
-def merge(list1, list2):
-    ans = []
-    head1 = list1.head
-    head2 = list2.head
-    while head1 is not None:
-        ans.append(head1.val)
-        head1 = head1.next
+def detectLoop(llist):
+    s = set()
+    temp = llist.head
+    while temp:
+        if temp in s:
+            return True
+        s.add(temp)
 
-    while head2 is not None:
-        ans.append(head2.val)
-        head2 = head2.next
+        temp = temp.next
 
-    ans.sort()
-    return ans
+    return False
 
 
 def main():
-    # List 1
     list1 = LinkedList()
-    list1.head = Node(1)
+    list1.head = Node(3)
     a2 = Node(2)
-    a3 = Node(4)
+    a3 = Node(0)
+    a4 = Node(4)
     list1.head.next = a2
     a2.next = a3
+    a3.next = a4
+    a4.next = a2
 
-    # List 2
-    list2 = LinkedList()
-    list2.head = Node(1)
-    b2 = Node(3)
-    b3 = Node(4)
-    list2.head.next = b2
-    b2.next = b3
-
-    print(merge(list1, list2))
+    print(detectLoop(list1))
 
 
 if __name__ == "__main__":
