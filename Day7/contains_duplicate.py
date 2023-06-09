@@ -4,7 +4,7 @@ from collections import Counter
 def containDuplicate(nums):
     c = Counter(nums)
     n = len(nums)
-    for count in  c.values():
+    for count in c.values():
         if count >= 2:
             return True
         else:
@@ -18,4 +18,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
